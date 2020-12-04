@@ -8,10 +8,8 @@ const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotalySecretKey');
 const db=knex({
     client: 'pg',
-    connection: {
-    connectionString: process.env.DATABASE_URL,
-      ssl:true,
-    }
+    connection: process.env.DATABASE_URL,
+    //ssl:true,
   });
 
 app.use(bodyParser.urlencoded({extended: false}));
