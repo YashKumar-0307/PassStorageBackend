@@ -1,0 +1,7 @@
+CREATE TABLE keys(
+pkey serial PRIMARY KEY,
+auid BIGINT NOT NULL,	
+userid text NOT NULL,
+platform VARCHAR(100) UNIQUE NOT NULL,
+keyss text NOT NULL
+);
