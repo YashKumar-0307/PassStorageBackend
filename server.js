@@ -38,7 +38,7 @@ app.post('/signin',(req,res)=>{
         else
         res.status(400).json('Wrong credentials');
     })
-    .catch(err => res.status(400).json(err))
+    .catch(err => res.status(400).json('Error Returned',err))
 });
 
 app.post('/register',(req,res)=>{
