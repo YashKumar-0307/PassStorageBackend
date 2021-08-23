@@ -5,3 +5,10 @@ userid text NOT NULL,
 platform VARCHAR(100) UNIQUE NOT NULL,
 keyss text NOT NULL
 );
+
+CREATE TABLE login(
+id integer PRIMARY KEY,
+hash varchar(100) NOT NULL,	
+email text NOT NULL,
+name text NOT NULL,
+);
