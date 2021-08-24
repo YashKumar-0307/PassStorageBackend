@@ -65,7 +65,7 @@ app.post('/signin',(req,res)=>{
         else
         {
             console.log("True");
-            res.json(user);
+            res.json(logi);
             return res.send(true)
         }
     })
