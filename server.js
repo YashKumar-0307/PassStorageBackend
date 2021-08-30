@@ -75,6 +75,8 @@ app.post('/signin',(req,res)=>{
     
 });
 
+app.options('*', cors())
+
 app.post('/register',(req,res)=>{
     if(!req.body.name || !req.body.email || ! req.body.password)
     {
@@ -125,6 +127,8 @@ app.post('/register',(req,res)=>{
 
 });
 
+app.options('*', cors())
+
 app.post('/newentry',(req,res)=>{
     if(!req.body.platform || !req.body.userid || !req.body.password)
     {
@@ -172,6 +176,8 @@ app.post('/newentry',(req,res)=>{
     })
 
 });
+
+app.options('*', cors())
 
 app.post('/getdetails',(req,res)=>{
     if(!req.body.platform)
