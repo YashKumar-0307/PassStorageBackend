@@ -31,6 +31,8 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
+app.options('*', cors())
+
 app.post('/signin',(req,res)=>{
     if(!req.body.email || ! req.body.password)
     {
