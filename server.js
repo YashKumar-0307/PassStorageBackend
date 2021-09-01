@@ -197,7 +197,7 @@ app.post('/getdetails',(req,res)=>{
     // .catch(err => res.status(400).json(err))
 
     keys.findOne({ platform: platform ,auid: id},(err,ke)=>{
-        if(err)
+        if(err || !ke)
         {
             return res.status(400).json(err)
         }
