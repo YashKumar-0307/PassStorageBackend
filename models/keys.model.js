@@ -14,7 +14,6 @@ auid:
     type: String,
     required: true,
     notnull:true,
-    unique: true
 },
 userid: 
 {
