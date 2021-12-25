@@ -213,4 +213,8 @@ app.post('/getdetails',(req,res)=>{
     });
 });
 
+app.get('/',(req,res)=>{
+    res.send('Server Running');
+})
+
 app.listen(process.env.PORT || 3001);
