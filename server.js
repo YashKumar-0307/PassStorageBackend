@@ -5,6 +5,7 @@ const app = express();
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
 const Cryptr = require('cryptr');
+const path = require('path');
 const mongoose = require('mongoose');
 let keys = require('./models/keys.model');
 let login = require('./models/login.model');
@@ -251,8 +252,14 @@ app.post('/getdetails',(req,res)=>{
     });
 });
 
-app.get('/',(req,res)=>{
-    res.send('Server Running');
-})
+// app.get('/',(req,res)=>{
+//     res.send('Server Running');
+// })
+app.use(express.static("client/build"));
+
+  app.use(express.static("client/build"));
+  app.get("*", (req,res) => {
+    res.sendFile(path.join(__dirname,"client","build", 'index.html'));
+  })
 
 app.listen(process.env.PORT || 3001);
