@@ -25,17 +25,21 @@ platform:
 {
     type: String,
     notnull:true,
-    unique: true
+    required: true
+    //unique: true
 },
 keyss:
 {
     type: String,
     notnull:true,
+    required: true
 },
 }, 
 {  
     collection:'keys',
     timestamps: true,
 });
+
+keysSchema.index({auid:1,platform:1},{unique:true});
 
 module.exports = mongoose.model('Keys', keysSchema);

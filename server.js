@@ -36,7 +36,7 @@ app.options('*', cors())
 app.post('/signin',(req,res)=>{
     if(!req.body.email || ! req.body.password)
     {
-        return res.status(400).json('Fields Empty');
+        return res.status(400).json('Nothing recieved');
     }
     //req.body.password=cryptr.decrypt(req.body.password);
     // db.select('email' , 'hash').from('login')
@@ -67,8 +67,7 @@ app.post('/signin',(req,res)=>{
         else
         {
             console.log("True");
-            res.json(logi);
-            return res.send(true)
+            return res.json(logi);
         }
     })
 
@@ -119,7 +118,10 @@ app.post('/register',(req,res)=>{
     })
     .catch(err => {
         console.log(err),
-            res.status(500).json({
+            res.status(201).json({
+                loginset: {
+                    _id:''
+                },
                 error: err
             });
     })
@@ -148,33 +150,70 @@ app.post('/newentry',(req,res)=>{
     //     res.json(response);
     // })
     // .catch(err => res.status(400).json(err));
-   
+    // keys.findOne({auid: id, platform: platform},(err,ke)=>{
+    //     if(err)
+    //     {
+    //         return res.status(200).json({  error: err,keyset: { _id:''},registered: false  })
+    //     }
+    //     if(ke && ke.auid )
+    //     {
+    //         return res.status(200).json({  keyset: { _id:''},registered: false  });
+    //     }
+    //     else
+    //     {
+    //         var idimage1 = new mongoose.Types.ObjectId();
+    //         const ke=new keys(
+    //             {
+    //                 _id: idimage1,
+    //                 auid: id,
+    //                 userid: userid,
+    //                 platform:platform,
+    //                 keyss:password,
+    //             }
+    //         )
+    //         ke.save().then(result => {
+    //             res.status(200).json({
+    //                 message: "User registered successfully!",
+    //                 keyset: {
+    //                     _id: result._id,
+    //                     auid: result.auid,
+    //                     userid: result.userid,
+    //                     platform: result.platform,
+    //                 },
+    //                 registered: true
+    //             })
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //             res.status(200).json({  error: err,keyset: { _id:''},registered: false  });
+    //         })
+    //     }
+    // });
     var idimage1 = new mongoose.Types.ObjectId();
     const ke=new keys(
-        {
-            _id: idimage1,
-            auid: id,
-            userid: userid,
-            platform:platform,
-            keyss:password,
-        }
-    )
+    {
+        _id: idimage1,
+        auid: id,
+        userid: userid,
+        platform:platform,
+        keyss:password,
+    })
     ke.save().then(result => {
-        res.status(201).json({
+        res.status(200).json({
             message: "User registered successfully!",
             keyset: {
                 _id: result._id,
                 auid: result.auid,
                 userid: result.userid,
                 platform: result.platform,
-            }
+            },
+            registered: true
         })
     })
     .catch(err => {
         console.log(err);
-        res.status(500).json({  error: err  });
+        res.status(200).json({  error: err,keyset: { _id:''},registered: false  });
     })
-
 });
 
 app.options('*', cors())
@@ -196,15 +235,14 @@ app.post('/getdetails',(req,res)=>{
     // })
     // .catch(err => res.status(400).json(err))
 
-    keys.findOne({ platform: platform ,auid: id},(err,ke)=>{
+    keys.findOne({auid: id, platform: platform},(err,ke)=>{
         if(err || !ke)
         {
             return res.status(400).json(err)
         }
-
         if( ke.auid )
         {
-            res.json(ke);
+            res.status(200).json(ke);
         }
         else
         {
