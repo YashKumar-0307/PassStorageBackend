@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri ="mongodb+srv://YKT:92399239@cluster-1.slcho.mongodb.net/PassStorage?retryWrites=true&w=majority";
+const uri ="";
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
