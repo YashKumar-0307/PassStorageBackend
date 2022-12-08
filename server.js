@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const uri ="";
+const uri = process.env.mongourl ||  "";
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

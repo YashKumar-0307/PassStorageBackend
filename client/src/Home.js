@@ -60,7 +60,7 @@ class Home extends React.Component {
       console.log("Empty new entry fields");
       return;
     }
-    fetch('http://passstoragebackend-env.eba-rgjm6pje.ap-south-1.elasticbeanstalk.com/newentry',{
+    fetch('https://pass-storage.onrender.com/newentry',{
     //fetch('http://pass-storage.herokuapp.com/newentry',{
       method : 'post',
       headers : {'Content-Type' : 'application/json'},
@@ -94,7 +94,7 @@ class Home extends React.Component {
       return;
     }
     this.setState({searfound: false});
-    fetch('http://passstoragebackend-env.eba-rgjm6pje.ap-south-1.elasticbeanstalk.com/getdetails',{
+    fetch('https://pass-storage.onrender.com/getdetails',{
     //fetch('http://pass-storage.herokuapp.com/getdetails',{
       method : 'post',
       headers : {'Content-Type' : 'application/json'},
